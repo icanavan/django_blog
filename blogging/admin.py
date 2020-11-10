@@ -8,23 +8,19 @@ class CategoryAdmin(admin.ModelAdmin):
     inlines = [
         CategoryInline,
     ]
+    exclude = ['posts']
 
-    exclude = ('posts')
-    pass
 
 
 class PostAdmin(admin.ModelAdmin):
+    # fields = ('title', 'content', 'category')
     inlines = [
         CategoryInline,
     ]
-    class Meta:
-        model = Post
     # fieldsets = (None, {
     #         'fields': ('url', 'title', 'content', 'categories')
     #     })
-    pass
 
-admin.site.register(Post)
-admin.site.register(PostAdmin)
-admin.site.register(Category)
-admin.site.register(CategoryAdmin)
+
+admin.site.register(Post, PostAdmin)
+admin.site.register(Category, CategoryAdmin)
