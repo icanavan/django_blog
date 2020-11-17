@@ -13,13 +13,9 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class PostAdmin(admin.ModelAdmin):
-    # fields = ('title', 'content', 'category')
     inlines = [
         CategoryInline,
     ]
-    # fieldsets = (None, {
-    #         'fields': ('url', 'title', 'content', 'categories')
-    #     })
 
 
 admin.site.register(Post, PostAdmin)
